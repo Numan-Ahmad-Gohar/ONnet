@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #141619;
+    --bg-panel: #1c1f24;
+    --bg-card: #252930;
+    --bg-card-hover: #2e333d;
+    --border-subtle: #343a44;
+    --border-hover: #4a515e;
+    --text-main: #eceff4;
+    --text-muted: #8b95a5;
+    --signal-amber: #f59e0b;
+    --signal-glow: #fbbf24;
+    --signal-green: #10b981;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Hardware Pulsing LED Animation */
+@keyframes signalPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+}
+
+.led-indicator-amber {
+  background-color: var(--signal-amber);
+  animation: signalPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes greenPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 2px rgba(16, 185, 129, 0.2);
+  }
+}
+
+.led-indicator-green {
+  background-color: var(--signal-green);
+  animation: greenPulse 3s infinite ease-in-out;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Tactile Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--signal-amber) !important;
+  outline-offset: 2px !important;
+}
