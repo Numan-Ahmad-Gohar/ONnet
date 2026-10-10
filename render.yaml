@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: onnet
+    env: python
+    buildCommand: "pip install -r server/requirements.txt && cd frontend && npm install && npm run build"
+    startCommand: "gunicorn --worker-class eventlet -w 1 --chdir server app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: NODE_VERSION
+        value: 20.0.0
